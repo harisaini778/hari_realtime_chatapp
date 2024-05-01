@@ -8,8 +8,7 @@ import userNameValidator from "../utils/validator";
 
 
 const Login = () => {
-  const [isLogin, setIsLogin] = useState("true");
-
+  const [isLogin, setIsLogin] = useState(true);
   const name = useInputValidation("");
   const bio = useInputValidation("");
   const username = useInputValidation("",userNameValidator);
