@@ -2,7 +2,7 @@ import { React, useState } from "react";
 import { Container, Typography, Paper, TextField, Button, Avatar,Stack, IconButton } from "@mui/material";
 import {CameraAlt as CameraAltIcon}  from "@mui/icons-material";
 import { VisuallyHiddenInput } from "../components/styles/StyledComponents";
-import {useInputValidation} from "6pp";
+import {useFileHandler, useInputValidation,useStrongPassword} from "6pp";
 import userNameValidator from "../utils/validator";
 
 
@@ -13,11 +13,21 @@ const Login = () => {
   const name = useInputValidation("");
   const bio = useInputValidation("");
   const username = useInputValidation("",userNameValidator);
-  const password = useInputValidation("");
+  const password = useStrongPassword();
+
+  const avatar = useFileHandler("single");
 
   const toggleLogin = () => {
     setIsLogin(!isLogin);
   };
+
+  const handleSignUp = (e) => {
+    e.preventDefault();
+  }
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+  }
 
   return (
     <Container
@@ -42,7 +52,7 @@ const Login = () => {
         {isLogin ? (
           <>
             <Typography variant="h5">Login</Typography>
-            <form>
+            <form onSubmit={handleLogin}>
               <TextField
                 required
                 fullWidth
@@ -86,7 +96,9 @@ const Login = () => {
             <Typography variant="h5" m={"1rem"}>Sign Up</Typography>
             <form style={{
                 margin : "0.5rem"
-            }}>
+            }}
+            onSubmit={handleSignUp}
+            >
             <Stack flexDirection="vertical"
             position = {"relative"}
             width= {"10rem"}
@@ -96,7 +108,9 @@ const Login = () => {
             width : "10rem",
             height : "10rem",
             objectFit : "contain",
-           }}/>
+           }}
+           src={avatar.preview}
+           />
 
            <IconButton sx={{
             position : "absolute",
@@ -112,11 +126,19 @@ const Login = () => {
            >
             <>
             <CameraAltIcon/>
-            <VisuallyHiddenInput type="file"/>
+            <VisuallyHiddenInput type="file" onChange={avatar.changeHandler}/>
             </>
            </IconButton>
 
             </Stack>
+
+            {
+                avatar.error && (
+                    <Typography color="error" variant="caption">
+                     {avatar.error}
+                    </Typography>
+                )
+               }
             <TextField
                 required
                 fullWidth
@@ -161,6 +183,13 @@ const Login = () => {
                 value={password.value}
                 onChange={password.changeHandler}
               />
+                {
+                password.error && (
+                    <Typography color="error" variant="caption">
+                     {password.error}
+                    </Typography>
+                )
+               }
               <Button
                 variant="contained"
                 color="primary"
