@@ -1,6 +1,6 @@
 import React,{lazy} from 'react';
 import {BrowserRouter,Routes,Route} from "react-router-dom";
-import ProtectRoute from './components/styles/auth/ProtectRoute';
+import ProtectRoute from './components/auth/ProtectRoute';
 
 
 
@@ -14,7 +14,7 @@ const Groups = lazy(()=>import("./pages/Groups"));
 
 const NotFound = lazy(()=>import("./pages/NotFound"));
 
-let user = false;
+let user = true;
 
 
 const App = () => {
@@ -22,7 +22,7 @@ const App = () => {
     <BrowserRouter>
     <Routes>
 
-      <Route element = {<ProtectRoute/>}>
+      <Route element = {<ProtectRoute user={user}/>}>
       <Route path='/' element={<Home/>}/>
       <Route path='/chat/:chatId' element={<Chat/>}/>
       <Route path='/groups' element={<Groups/>}/>
@@ -34,7 +34,7 @@ const App = () => {
      }/>
 
      <Route path='*' element={<NotFound/>}/>
-     
+
     </Routes>
 
 
@@ -43,4 +43,4 @@ const App = () => {
   )
 }
 
-export default App
+export default App;

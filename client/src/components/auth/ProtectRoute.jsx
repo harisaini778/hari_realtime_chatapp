@@ -7,15 +7,9 @@ const ProtectRoute = ({children,user,redirect="/login"}) => {
 
         return <Navigate to={redirect}/>
 
+    } else {
+        return children ? children : <Outlet/>
     }
-
-
-    return children ? children : <Outlet/>
-
-
-  return (
-    <div>ProtectRoute</div>
-  )
 }
 
 export default ProtectRoute;
