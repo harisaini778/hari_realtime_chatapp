@@ -16,9 +16,9 @@ const Profile = () => {
      }}/>
 
       <ProfileCard heading={"Bio"} text={"nkdnkcnsdl nsacnkmc nkascnl"}/>
-      <ProfileCard heading={"UserName"} text={"harikumarsaini"} Icon={<UserNameIcon/>}/>
-      <ProfileCard heading={"Name"} text={"Hari Kumar Saini"} Icon={<FaceIcon/>}/>
-      <ProfileCard heading={"Joined"} text={moment('2023-11-04T18:30:00.000Z').fromNow()} Icon={<CalenderIcon/>}/>
+      <ProfileCard heading={"UserName"} text={"harikumarsaini"} Icon={<UserNameIcon  sx={{color:"white"}}/>}/>
+      <ProfileCard heading={"Name"} text={"Hari Kumar Saini"} Icon={<FaceIcon sx={{color:"white"}}/>} />
+      <ProfileCard heading={"Joined"} text={moment('2023-11-04T18:30:00.000Z').fromNow()} Icon={<CalenderIcon sx={{color:"white"}}/>} />
 
     </Stack>
   )
@@ -35,7 +35,7 @@ const ProfileCard = ({text,Icon,heading}) => {
       }
 
       <Stack>
-        <Typography variant='body1'>{text}</Typography>
+        <Typography variant='body1' color={"white"}>{text}</Typography>
         <Typography variant='caption' color={"grey"}>{text}</Typography>
       </Stack>
 

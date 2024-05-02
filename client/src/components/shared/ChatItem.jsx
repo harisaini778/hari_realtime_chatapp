@@ -1,4 +1,4 @@
-import React,{useMemo} from "react";
+import React,{memo} from "react";
 import { Link } from "../styles/StyledComponents";
 import { Hidden, Typography,Stack,Box } from "@mui/material";
 import AvatarCard from "./AvatarCard";
@@ -71,4 +71,4 @@ const ChatItem = ({
   )
 };
 
-export default ChatItem;
+export default memo(ChatItem);

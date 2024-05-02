@@ -30,3 +30,33 @@ export const sampleChats = [
   
     },
 ]
+
+export const sampleUsers = [
+    {
+        "avatar": ["https://www.w3schools.com/howto/img_avatar.png"],
+        "name": "Alice",
+        "_id": "111",
+    },
+    {
+        "avatar": ["https://www.w3schools.com/howto/img_avatar.png"],
+        "name": "Alice",
+        "_id": "222",
+    }
+]
+
+export const sampleNotifications = [
+    {
+        sender : {
+            "avatar": ["https://www.w3schools.com/howto/img_avatar.png"],
+            "name": "Alice",
+        },
+        "_id": "111",
+    },
+    {
+        sender : {
+            "avatar": ["https://www.w3schools.com/howto/img_avatar.png"],
+            "name": "Alice",
+        },
+        "_id": "222",
+    }
+]
